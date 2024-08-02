@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../utils/connection');
 
 // En Mayúsculas y singular
-const Soungs = sequelize.define('soungs', {
+const Songs = sequelize.define('song', {
     // Definimos las columnas aquí
     name: {
         type: DataTypes.STRING,
@@ -15,4 +15,4 @@ const Soungs = sequelize.define('soungs', {
     }
 });
 
-module.exports = Soungs;
+module.exports = Songs;

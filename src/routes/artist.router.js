@@ -9,8 +9,13 @@ const express = require("express");
 
 const routerArtist = express.Router();
 
-routerArtist.route("/").get(getAll).post(create);
+routerArtist.route("/")
+.get(getAll)
+.post(create);
 
-routerArtist.route("/:id").get(getOne).delete(remove).put(update);
+routerArtist.route("/:id")
+.get(getOne)
+.delete(remove)
+.put(update);
 
 module.exports = routerArtist;

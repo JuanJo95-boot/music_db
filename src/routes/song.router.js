@@ -1,18 +1,23 @@
 //Gabriel
-const { getAll, getOne, create, update, destroy } = require('../controllers/soungs.controllers');
+const { setGenres } = require('../controllers/song.controllers');
+const { getAll, getOne, create, update, destroy, setGenres } = require('../controllers/song.controllers');
 //  getAll,
 
 const express = require('express');
 
-const soungsRouter = express.Router();
+const songRouter = express.Router();
 
-soungsRouter.route('/')
+songRouter.route('/')
     .get(getAll)
     .post(create);
 
-soungsRouter.route('/:id')
+songRouter.route('/:id/genres')
+    .post(setGenres)
+
+
+songRouter.route('/:id')
     .get(getOne)
     .delete(destroy)
     .put(update);
 
-module.exports = soungsRouter;
+module.exports = songRouter;
