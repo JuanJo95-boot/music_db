@@ -6,7 +6,7 @@ const router = express.Router();
 // colocar las rutas aquí
 
 
-router.use('/soungs', routerSpung)
+router.use('/songs', routerSpung)
 
 
 module.exports = router;
