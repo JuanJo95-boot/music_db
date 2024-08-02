@@ -8,7 +8,8 @@ routerGenre.route('/')
     .post(create);
 
 
-
+routerGenre.route('/:id/artists')
+    .post(setArtists)
 
 routerGenre.route('/:id')
     .get(getOne)

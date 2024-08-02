@@ -38,32 +38,18 @@ const update = catchError(async (req, res) => {
 });
 
 
-const setArtists = catchError(async (req, res) => {
-  //! 1- identificar al estudiante
-  const { id } = req.params
-  const song = await Song.findByPk(id)
 
-  //!  2- seteo los cursos a los estudiantes
-  await song.setCourses(req.body)
 
-  //!  3- Obtengo lo que setee, con el objetivo de dar la vista
-  const artists = await song.getCourses()
-
-  //!  4 finalmente retorno
-  return res.json(artists)
-
-})
-
-const setGenres = catchError(async(req,res)=>{    
+const setSongs = catchError(async(req,res)=>{    
   //identificar el artista
   const {id} = req.params;  
-  const artist = await Artist.findByPk(id)    
+  const song = await Artist.findByPk(id)    
  //setear los generoa del artista
-  await artist.setGenres(req.body)    
+  await song.setSongs(req.body)    
   // Obtener lo que acabo de setear para darle vista
-  const genres = await artist.getGenres()    
+  const songs = await song.getSongs()    
   //retornamos los generos
-  return res.json(genres)
+  return res.json(songs)
 });
 
 
@@ -74,6 +60,5 @@ module.exports = {
   getOne,
   remove,
   update,
-  setArtists,
-  setGenres
+  setSongs
 };

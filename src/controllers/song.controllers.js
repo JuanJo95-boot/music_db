@@ -48,6 +48,8 @@ const setGenres = catchError(async (req, res) =>{
     return res.json(Genres)
 })
 
+
+
 module.exports = {
     getAll,
     getOne,
