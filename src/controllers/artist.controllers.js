@@ -1,9 +1,10 @@
 //Juan David
 const catchError = require("../utils/catchError");
 const Artist = require("../models/Artist");
+const Genre = require("../models/Genre");
 
 const getAll = catchError(async (req, res) => {
-  const results = await Artist.findAll();
+  const results = await Artist.findAll( {include: [Genre]});
   return res.json(results);
 });
 
@@ -53,6 +54,18 @@ const setArtists = catchError(async (req, res) => {
 
 })
 
+const setGenres = catchError(async(req,res)=>{    
+  //identificar el artista
+  const {id} = req.params;  
+  const artist = await Artist.findByPk(id)    
+ //setear los generoa del artista
+  await artist.setGenres(req.body)    
+  // Obtener lo que acabo de setear para darle vista
+  const genres = await artist.getGenres()    
+  //retornamos los generos
+  return res.json(genres)
+});
+
 
 
 module.exports = {
@@ -61,5 +74,6 @@ module.exports = {
   getOne,
   remove,
   update,
-  setArtists
+  setArtists,
+  setGenres
 };
