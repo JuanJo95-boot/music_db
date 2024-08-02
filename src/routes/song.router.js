@@ -10,6 +10,9 @@ soungsRouter.route('/')
     .get(getAll)
     .post(create);
 
+soungsRouter.route('/:id/artists')
+    .post(setArtists);
+  
 soungsRouter.route('/:id')
     .get(getOne)
     .delete(destroy)
