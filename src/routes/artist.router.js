@@ -3,7 +3,7 @@ const {
   create,
   getOne,
   remove,
-  update,
+  update
 } = require("../controllers/artist.controllers");
 const express = require("express");
 

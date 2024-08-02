@@ -1,8 +1,9 @@
 const catchError = require('../utils/catchError');
 const Genre = require('../models/Genre');
+const Artist = require('../models/Artist');
 
 const getAll = catchError(async(req, res) => {
-    const results = await Genre.findAll();
+    const results = await Genre.findAll( {include: [Artist]});
     return res.json(results);
 });
 
@@ -35,10 +36,11 @@ const update = catchError(async(req, res) => {
     return res.json(result[1][0]);
 });
 
+
 module.exports = {
     getAll,
     create,
     getOne,
     remove,
-    update
+    update    
 }
