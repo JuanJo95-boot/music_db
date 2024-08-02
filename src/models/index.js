@@ -16,5 +16,5 @@ Artist.belongsToMany(Song, { through: 'songArtists' })
 
 
 const Genre = require("./Genre");
-Artist.belongsToMany(Genre, { through: 'coursesStudents' })
-Genre.belongsToMany(Artist, { through: 'coursesStudents' })
+Artist.belongsToMany(Genre, { through: 'genreArtist' })
+Genre.belongsToMany(Artist, { through: 'genreArtist' })
