@@ -36,10 +36,30 @@ const update = catchError(async (req, res) => {
   return res.json(result[1][0]);
 });
 
+
+const setArtists = catchError(async (req, res) => {
+  //! 1- identificar al estudiante
+  const { id } = req.params
+  const song = await Song.findByPk(id)
+
+  //!  2- seteo los cursos a los estudiantes
+  await song.setCourses(req.body)
+
+  //!  3- Obtengo lo que setee, con el objetivo de dar la vista
+  const artists = await song.getCourses()
+
+  //!  4 finalmente retorno
+  return res.json(artists)
+
+})
+
+
+
 module.exports = {
   getAll,
   create,
   getOne,
   remove,
   update,
+  setArtists
 };

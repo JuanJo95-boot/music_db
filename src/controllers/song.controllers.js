@@ -35,10 +35,29 @@ const destroy = catchError(async (req, res) => {
     return !result ? res.status(404).json({ msj: 'Nada Para mostrar' }) : res.status(204).json({ msg: 'Dato Eliminado con Exito' });
 });
 
+
+const setSongs = catchError(async (req, res) => {
+    //! 1- identificar al estudiante
+    const { id } = req.params
+    const artist = await Artist.findByPk(id)
+  
+    //!  2- seteo los cursos a los estudiantes
+    await artist.setCourses(req.body)
+  
+    //!  3- Obtengo lo que setee, con el objetivo de dar la vista
+    const songs = await artist.getCourses()
+  
+    //!  4 finalmente retorno
+    return res.json(songs)
+  
+  })
+
+
 module.exports = {
     getAll,
     getOne,
     create,
     update,
-    destroy
+    destroy,
+    setSongs
 };
