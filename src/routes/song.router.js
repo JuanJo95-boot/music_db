@@ -1,5 +1,4 @@
 //Gabriel
-const { setGenres } = require('../controllers/song.controllers');
 const { getAll, getOne, create, update, destroy, setGenres } = require('../controllers/song.controllers');
 //  getAll,
 

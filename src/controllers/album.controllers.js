@@ -3,32 +3,32 @@ const catchError = require('../utils/catchError');
 const Album = require('../models/Album');
 
 const getAll = catchError(async(req, res) => {
-    const results = await model.findAll();
+    const results = await Album.findAll();
     return res.json(results);
 });
 
 const create = catchError(async(req, res) => {
-    const result = await model.create(req.body);
+    const result = await Album.create(req.body);
     return res.status(201).json(result);
 });
 
 const getOne = catchError(async(req, res) => {
     const { id } = req.params;
-    const result = await model.findByPk(id);
+    const result = await Album.findByPk(id);
     if(!result) return res.sendStatus(404);
     return res.json(result);
 });
 
 const remove = catchError(async(req, res) => {
     const { id } = req.params;
-    const result = await model.destroy({ where: {id} });
+    const result = await Album.destroy({ where: {id} });
     if(!result) return res.sendStatus(404);
     return res.sendStatus(204);
 });
 
 const update = catchError(async(req, res) => {
     const { id } = req.params;
-    const result = await model.update(
+    const result = await Album.update(
         req.body,
         { where: {id}, returning: true }
     );
